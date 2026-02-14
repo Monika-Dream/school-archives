@@ -1,0 +1,66 @@
+.container[data-v-e77a3d4d] {
+  background: white;
+}
+nav[data-v-e77a3d4d] {
+  width: 1205px;
+  height: 88px;
+  background: url(./登录注册头部.ae243211.png) no-repeat center;
+  margin: 0 auto;
+}
+nav > a[data-v-e77a3d4d] {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+nav[data-v-e77a3d4d]::after {
+  content: "";
+  position: absolute;
+  height: 100vh;
+  background: #ffffff;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+.background[data-v-e77a3d4d] {
+  background-image: url(https://gw.alicdn.com/imgextra/i3/O1CN01iyYdem1GQd1yGgA0a_!!6000000000617-0-tps-2500-600.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  position: relative;
+  height: 60vh;
+}
+.background > .login_rectangle[data-v-e77a3d4d] {
+  position: relative;
+  width: 19vw;
+  padding: 25px 25px 23px;
+  right: -19vw;
+  aspect-ratio: 1/1;
+  top: 12vh;
+  background: #fff;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background-color: hsla(0, 0%, 100%, 0.9);
+  transition: all 0.2s;
+}
+.background > .login_rectangle > .password_login[data-v-e77a3d4d] {
+  width: 3.6vw;
+  height: 3vh;
+  opacity: 0;
+  position: absolute;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  left: 1.2vw;
+  top: 3.2vh;
+}
+.background > .login_rectangle > .sms_login[data-v-e77a3d4d] {
+  width: 3.6vw;
+  height: 3vh;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  padding: 0;
+  border: 0;
+  left: 5.32vw;
+  top: 3.2vh;
+}

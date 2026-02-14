@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>这是一个网站 ?</title>
+</head>
+<link rel="stylesheet" href="./OtherHelp/14-京东css初始化.css">
+<link rel="stylesheet" href="./OtherHelp/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" href="./templates/swiper_settingCSS.css">
+<link rel="stylesheet" href="./templates/index.css">
+
+<body>
+  <script src="./OtherHelp/vue.js"></script>
+  <div id="setting_All">
+    <div class="top">
+      <ul class="top_ul" id="top_ul">
+        <li><a href="javascript:;">回到首页</a></li>
+        <li><a href="javascript:;">最新消息</a></li>
+        <li><a href="javascript:;">历史记录</a></li>
+        <li><a href="javascript:;">管理文章</a></li>
+        <li><a href="javascript:;">我的收藏</a></li>
+        <li><a href="javascript:;">我的消息</a></li>
+        <li><a href="javascript:;">购物小车</a></li>
+      </ul>
+      <div class="user_handler"></div>
+      <div class="triangle"></div>
+      <h1 class="title">盗梦之末</h1>
+    </div>
+    <article>
+      <div id="delete_text">
+        <span class="text"></span>
+        <span class="delete"></span>
+      </div>
+      <div class="carousel">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div data-hash="slide1" class="swiper-slide">
+              <img src="./img/1.jpg" class="swiper-lazy">
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div data-hash="slide2" class="swiper-slide">
+              <img src="./img/2.png" class="swiper-lazy">
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div data-hash="slide3" class="swiper-slide">
+              <img src="./img/3.png" class="swiper-lazy">
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div data-hash="slide4" class="swiper-slide">
+              <img src="./img/4.png" class="swiper-lazy">
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <div class="schedule">
+        <ul>
+          <li>日程表</li>
+          <li>那么你该干什么</li>
+          <li>那么你该干什么</li>
+          <li>那么你该干什么</li>
+          <li>那么你该干什么</li>
+          <li>那么你该干什么</li>
+          <li>那么你该干什么</li>
+        </ul>
+      </div>
+      <hr>
+      </hr>
+      <input type="text" placeholder=" 搜索功能非常的好用, 以至于我会将它显示这么大~ " id="input_search">
+      <button id="input_button">Submit</button>
+      <div class="body">
+        <div class="active">
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{introduce.img_path}}</s>
+            <div class="title">
+              <h1>{{introduce.name}}</h1>
+            </div>
+            <p class="good_active">{{introduce.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{introduce.date}}</li>
+                <li>{{introduce.super_admin}}</li>
+                <li>阅读: {{introduce.read_count}}</li>
+                <li>{{introduce.comments}}条评论</li>
+                <li>{{introduce.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{firstGame.img_path}}</s>
+            <div class="title">
+              <h1>{{firstGame.name}}</h1>
+            </div>
+            <p class="good_active">{{firstGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{firstGame.date}}</li>
+                <li>{{firstGame.super_admin}}</li>
+                <li>阅读: {{firstGame.read_count}}</li>
+                <li>{{firstGame.comments}}条评论</li>
+                <li>{{firstGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{SecondGame.img_path}}</s>
+            <div class="title">
+              <h1>{{SecondGame.name}}</h1>
+            </div>
+            <p class="good_active">{{SecondGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{SecondGame.date}}</li>
+                <li>{{SecondGame.super_admin}}</li>
+                <li>阅读: {{SecondGame.read_count}}</li>
+                <li>{{SecondGame.comments}}条评论</li>
+                <li>{{SecondGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{ThirdGame.img_path}}</s>
+            <div class="title">
+              <h1>{{ThirdGame.name}}</h1>
+            </div>
+            <p class="good_active">{{ThirdGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{ThirdGame.date}}</li>
+                <li>{{ThirdGame.super_admin}}</li>
+                <li>阅读: {{ThirdGame.read_count}}</li>
+                <li>{{ThirdGame.comments}}条评论</li>
+                <li>{{ThirdGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{FourthGame.img_path}}</s>
+            <div class="title">
+              <h1>{{FourthGame.name}}</h1>
+            </div>
+            <p class="good_active">{{FourthGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{FourthGame.date}}</li>
+                <li>{{FourthGame.super_admin}}</li>
+                <li>阅读: {{FourthGame.read_count}}</li>
+                <li>{{FourthGame.comments}}条评论</li>
+                <li>{{FourthGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{FifthGame.img_path}}</s>
+            <div class="title">
+              <h1>{{FifthGame.name}}</h1>
+            </div>
+            <p class="good_active">{{FifthGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{FifthGame.date}}</li>
+                <li>{{FifthGame.super_admin}}</li>
+                <li>阅读: {{FifthGame.read_count}}</li>
+                <li>{{FifthGame.comments}}条评论</li>
+                <li>{{FifthGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{SixthGame.img_path}}</s>
+            <div class="title">
+              <h1>{{SixthGame.name}}</h1>
+            </div>
+            <p class="good_active">{{SixthGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{SixthGame.date}}</li>
+                <li>{{SixthGame.super_admin}}</li>
+                <li>阅读: {{SixthGame.read_count}}</li>
+                <li>{{SixthGame.comments}}条评论</li>
+                <li>{{SixthGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{SeventhGame.img_path}}</s>
+            <div class="title">
+              <h1>{{SeventhGame.name}}</h1>
+            </div>
+            <p class="good_active">{{SeventhGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{SeventhGame.date}}</li>
+                <li>{{SeventhGame.super_admin}}</li>
+                <li>阅读: {{SeventhGame.read_count}}</li>
+                <li>{{SeventhGame.comments}}条评论</li>
+                <li>{{SeventhGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{EighthGame.img_path}}</s>
+            <div class="title">
+              <h1>{{EighthGame.name}}</h1>
+            </div>
+            <p class="good_active">{{EighthGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{EighthGame.date}}</li>
+                <li>{{EighthGame.super_admin}}</li>
+                <li>阅读: {{EighthGame.read_count}}</li>
+                <li>{{EighthGame.comments}}条评论</li>
+                <li>{{EighthGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="img"></div>
+            <s style="display: none;">{{NinthGame.img_path}}</s>
+            <div class="title">
+              <h1>{{NinthGame.name}}</h1>
+            </div>
+            <p class="good_active">{{NinthGame.allegorical}}</p>
+            <div class="bottom_change">
+              <ul>
+                <li>日期: {{NinthGame.date}}</li>
+                <li>{{NinthGame.super_admin}}</li>
+                <li>阅读: {{NinthGame.read_count}}</li>
+                <li>{{NinthGame.comments}}条评论</li>
+                <li>{{NinthGame.good}}人点赞</li>
+                <li>公告阅读全文</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <div class="hot_message">
+          <div>
+            <div class="nav">-- 今日话题 --</div>
+            <ul>
+              <li>
+                <p>《 紫罗兰的永恒花园 》 观后感</p>
+              </li>
+              <li>
+                <p>《 Clannad 》 观后感</p>
+              </li>
+              <li>
+                <p>《 四月是你的谎言 》 观后感</p>
+              </li>
+              <li>
+                <p>《 Another 》 观后感</p>
+              </li>
+              <li>
+                <p>《 未来日记 》 观后感</p>
+              </li>
+              <li>
+                <p>《 天气之子 》 观后感</p>
+              </li>
+              <li>
+                <p>《 Happy Sugar Life 》 观后感</p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p id="time_now"></p>
+            <button id="back_top">返回</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <script src="./OtherHelp/animation_DM.js"></script>
+  <script src="./OtherHelp/page_animation_DM.js"></script>
+  <script src="./OtherHelp/swiper/swiper-bundle.min.js"></script>
+  <script src="./templates/index.js"></script>
+</body>
+
+</html>

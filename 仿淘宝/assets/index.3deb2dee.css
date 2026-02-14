@@ -1,0 +1,21 @@
+.curstomer[data-v-7d6cf604] {
+  height: 563px;
+  width: 1440px;
+  background: url(./客服.7a5e5cfc.png) center no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+.curstomer[data-v-7d6cf604]::after {
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+}
+.curstomer > a[data-v-7d6cf604] {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}

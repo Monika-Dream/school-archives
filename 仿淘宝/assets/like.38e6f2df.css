@@ -1,0 +1,16 @@
+.like_this[data-v-04884d12] {
+  background-color: #ffffff;
+  padding: 0 12px;
+}
+.like_this > dt[data-v-04884d12] {
+  height: 50px;
+  background: url(./do_you_like.746cbfc7.png) no-repeat left center;
+}
+.like_this > dd[data-v-04884d12] {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.like_this > dd[data-v-04884d12]:nth-of-type(3n) {
+  margin-right: unset;
+}
