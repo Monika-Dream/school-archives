@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkdm_monika"]=self["webpackChunkdm_monika"]||[]).push([[486],{486:function(n,a,e){e.r(a),e.d(a,{default:function(){return f}});var r=e(3396);const t={class:"wallpaper"};function c(n,a){return(0,r.wg)(),(0,r.iD)("div",t,"还没制作嘞, 请静候刚创建文件夹的我吧 ~")}var s=e(89);const u={},d=(0,s.Z)(u,[["render",c],["__scopeId","data-v-fb607f6a"]]);var f=d}}]);
+//# sourceMappingURL=486.d5d037c8.js.map
