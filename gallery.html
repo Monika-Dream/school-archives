@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS Gallery - School Archives</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* --- light rays --- */
+    .light-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .ray {
+      position: absolute;
+      top: -40%;
+      left: -10%;
+      width: 120%;
+      height: 180%;
+      transform-origin: 0% 0%;
+    }
+
+    .ray-1 {
+      background: linear-gradient(135deg, rgba(255,230,160,0.2) 0%, rgba(255,200,100,0.08) 30%, transparent 60%);
+      transform: rotate(-5deg);
+      animation: r1 8s ease-in-out infinite;
+    }
+    .ray-2 {
+      background: linear-gradient(140deg, rgba(255,220,140,0.14) 0%, rgba(255,190,80,0.05) 25%, transparent 50%);
+      transform: rotate(3deg);
+      animation: r2 11s ease-in-out infinite;
+    }
+
+    @keyframes r1 {
+      0%,100% { opacity:1; transform:rotate(-5deg) translateX(0); }
+      50% { opacity:0.6; transform:rotate(-2deg) translateX(30px); }
+    }
+    @keyframes r2 {
+      0%,100% { opacity:0.8; transform:rotate(3deg) translateX(0); }
+      50% { opacity:1; transform:rotate(6deg) translateX(-20px); }
+    }
+
+    /* --- header --- */
+    .header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .back {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #666;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+    }
+    .back:hover { color: #aaa; }
+    .back::before { content: "\2190\00a0"; }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 200;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, #fff, #ffd98c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+    }
+
+    .header p {
+      font-size: 0.8rem;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    /* --- gallery --- */
+    .gallery {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .piece {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .frame {
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      max-width: 100%;
+    }
+
+    .frame:hover {
+      border-color: rgba(255,210,120,0.2);
+      box-shadow: 0 4px 40px rgba(255,200,100,0.08);
+    }
+
+    .frame img {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .info {
+      text-align: center;
+    }
+
+    .info h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .info p {
+      font-size: 0.75rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .info .meta {
+      font-size: 0.65rem;
+      color: #444;
+      margin-top: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* --- lightbox --- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="light-layer">
+    <div class="ray ray-1"></div>
+    <div class="ray ray-2"></div>
+  </div>
+
+  <div class="header">
+    <a class="back" href="./index.html">School Archives</a>
+    <h1>PS Gallery</h1>
+    <p>Photoshop coursework, circa 2022</p>
+  </div>
+
+  <div class="gallery">
+
+    <div class="piece">
+      <div class="frame" onclick="openLightbox(this)">
+        <img src="./Ps历史作业/万圣节 - Good Bye Sayori/万圣节 - Good Bye Sayori.jpg"
+             alt="Halloween - Good Bye Sayori" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>Good Bye Sayori</h2>
+        <p>Halloween event poster for the Literature Club.</p>
+        <p class="meta">1890 x 4253 &middot; Photoshop</p>
+      </div>
+    </div>
+
+    <div class="piece">
+      <div class="frame" onclick="openLightbox(this)">
+        <img src="./Ps历史作业/文学社生日快乐/DDLC四周年快乐.jpg"
+             alt="DDLC 4th Anniversary" loading="lazy">
+      </div>
+      <div class="info">
+        <h2>DDLC 4th Anniversary</h2>
+        <p>Monika on the crescent moon. Happy birthday, Literature Club.</p>
+        <p class="meta">900 x 900 &middot; Photoshop</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    function openLightbox(frame) {
+      const src = frame.querySelector("img").src;
+      document.getElementById("lb-img").src = src;
+      document.getElementById("lightbox").classList.add("active");
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>
