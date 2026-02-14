@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Archives</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "Segoe UI", sans-serif;
+      background: #0f0f0f;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+    p.sub {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 2.5rem;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      max-width: 900px;
+    }
+    a.card {
+      display: block;
+      width: 260px;
+      padding: 1.5rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    a.card:hover {
+      border-color: #555;
+      transform: translateY(-2px);
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.5;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      color: #aaa;
+      border: 1px solid #333;
+      border-radius: 3px;
+      padding: 0.15em 0.4em;
+      margin-top: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>School Archives</h1>
+  <p class="sub">2022 front-end coursework</p>
+  <div class="cards">
+    <a class="card" href="./dm_-just-monika/index.html">
+      <h2>DM - Just Monika</h2>
+      <p>Early personal website built with Vue 2. The predecessor to the current DM project.</p>
+      <span class="tag">Vue 2</span>
+    </a>
+    <a class="card" href="./仿淘宝/index.html">
+      <h2>Taobao Clone</h2>
+      <p>Taobao homepage replica. Vue 3 + Vite school assignment.</p>
+      <span class="tag">Vue 3 + Vite</span>
+    </a>
+    <a class="card" href="./本学期前端/index.html">
+      <h2>Dream End Blog</h2>
+      <p>"盗梦之末" — a static blog about anime, games, and stories.</p>
+      <span class="tag">HTML / CSS / JS</span>
+    </a>
+  </div>
+</body>
+</html>
