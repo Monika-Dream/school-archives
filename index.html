@@ -17,11 +17,28 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
     }
 
-    /* --- light rays from upper-left --- */
+    /* --- CRT scanline overlay --- */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px
+      );
+    }
+
+    /* --- light rays (shifted to cyan/magenta) --- */
     .light-layer {
       position: fixed;
       inset: 0;
@@ -42,8 +59,8 @@
     .ray-1 {
       background: linear-gradient(
         135deg,
-        rgba(255, 230, 160, 0.25) 0%,
-        rgba(255, 200, 100, 0.1) 30%,
+        rgba(0, 255, 255, 0.15) 0%,
+        rgba(0, 200, 220, 0.06) 30%,
         transparent 60%
       );
       transform: rotate(-5deg);
@@ -53,8 +70,8 @@
     .ray-2 {
       background: linear-gradient(
         140deg,
-        rgba(255, 220, 140, 0.18) 0%,
-        rgba(255, 190, 80, 0.07) 25%,
+        rgba(255, 0, 200, 0.1) 0%,
+        rgba(200, 0, 180, 0.04) 25%,
         transparent 50%
       );
       transform: rotate(3deg);
@@ -64,8 +81,8 @@
     .ray-3 {
       background: linear-gradient(
         128deg,
-        rgba(255, 240, 200, 0.12) 0%,
-        rgba(255, 210, 120, 0.05) 20%,
+        rgba(0, 255, 200, 0.08) 0%,
+        rgba(0, 220, 180, 0.03) 20%,
         transparent 45%
       );
       transform: rotate(-12deg);
@@ -85,7 +102,7 @@
       50% { opacity: 1; transform: rotate(-8deg) translateX(15px); }
     }
 
-    /* --- floating dust particles --- */
+    /* --- floating dust particles (cyan tint) --- */
     .particles {
       position: fixed;
       inset: 0;
@@ -97,7 +114,7 @@
       position: absolute;
       width: 2px;
       height: 2px;
-      background: rgba(255, 220, 150, 0.3);
+      background: rgba(0, 255, 220, 0.25);
       border-radius: 50%;
       animation: float linear infinite;
     }
@@ -109,29 +126,119 @@
       100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
     }
 
+    /* --- glitch bar flickers --- */
+    .glitch-bars {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .g-bar {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 255, 255, 0.03);
+      opacity: 0;
+      animation: bar-flick var(--dur) var(--delay) ease-in-out infinite;
+    }
+
+    @keyframes bar-flick {
+      0%, 100% { opacity: 0; transform: scaleX(1); }
+      48% { opacity: 0; }
+      50% { opacity: 1; transform: scaleX(1.02) translateX(-2px); background: rgba(255, 0, 100, 0.04); }
+      52% { opacity: 0; }
+    }
+
     /* --- content --- */
     .content {
       position: relative;
-      z-index: 1;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    h1 {
+    /* --- glitch title --- */
+    .glitch-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch-wrap h1,
+    .glitch-wrap h1::before,
+    .glitch-wrap h1::after {
       font-size: 2rem;
       font-weight: 200;
       letter-spacing: 0.25em;
       margin-bottom: 0.4rem;
-      background: linear-gradient(135deg, #fff 0%, #ffd98c 100%);
+      background: linear-gradient(135deg, #fff 0%, #00ffd5 60%, #ff00c8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
+    .glitch-wrap h1 {
+      position: relative;
+      animation: glitch-skew 4s infinite linear alternate-reverse;
+    }
+
+    .glitch-wrap h1::before,
+    .glitch-wrap h1::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .glitch-wrap h1::before {
+      /* cyan channel */
+      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #0ff 0%, #0ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      clip-path: inset(0 0 65% 0);
+      animation: glitch-top 3s infinite linear alternate-reverse;
+      opacity: 0.8;
+    }
+
+    .glitch-wrap h1::after {
+      /* magenta channel */
+      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #f0c 0%, #f0c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      clip-path: inset(60% 0 0 0);
+      animation: glitch-btm 2.5s infinite linear alternate-reverse;
+      opacity: 0.8;
+    }
+
+    @keyframes glitch-top {
+      0%, 40%, 44%, 100% { transform: translate(0); }
+      41% { transform: translate(-3px, -1px); }
+      42% { transform: translate(3px, 1px); }
+      43% { transform: translate(-2px, 0); }
+    }
+
+    @keyframes glitch-btm {
+      0%, 55%, 59%, 100% { transform: translate(0); }
+      56% { transform: translate(4px, 1px); }
+      57% { transform: translate(-3px, -1px); }
+      58% { transform: translate(2px, 0); }
+    }
+
+    @keyframes glitch-skew {
+      0%, 92%, 94%, 100% { transform: skewX(0deg); }
+      93% { transform: skewX(-1deg); }
+    }
+
     p.sub {
       font-size: 0.8rem;
-      color: #666;
+      color: #556;
       margin-bottom: 3rem;
       letter-spacing: 0.15em;
     }
@@ -149,7 +256,7 @@
       width: 260px;
       padding: 1.6rem;
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(0, 255, 220, 0.08);
       border-radius: 10px;
       text-decoration: none;
       color: #e0e0e0;
@@ -159,6 +266,7 @@
       overflow: hidden;
     }
 
+    /* RGB sweep on hover */
     a.card::before {
       content: "";
       position: absolute;
@@ -169,7 +277,8 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 220, 150, 0.03),
+        rgba(0, 255, 220, 0.04),
+        rgba(255, 0, 200, 0.03),
         transparent
       );
       transition: left 0.6s ease;
@@ -180,9 +289,21 @@
     }
 
     a.card:hover {
-      border-color: rgba(255, 210, 120, 0.2);
+      border-color: rgba(0, 255, 220, 0.25);
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(255, 200, 100, 0.06);
+      box-shadow:
+        0 0 20px rgba(0, 255, 220, 0.07),
+        0 0 40px rgba(255, 0, 200, 0.04),
+        inset 0 0 20px rgba(0, 255, 220, 0.02);
+      animation: card-glitch 0.3s steps(2) 1;
+    }
+
+    @keyframes card-glitch {
+      0% { transform: translateY(-4px) translateX(0); }
+      25% { transform: translateY(-4px) translateX(-3px); }
+      50% { transform: translateY(-4px) translateX(2px); }
+      75% { transform: translateY(-4px) translateX(-1px); }
+      100% { transform: translateY(-4px) translateX(0); }
     }
 
     .card h2 {
@@ -194,15 +315,15 @@
 
     .card p {
       font-size: 0.78rem;
-      color: #777;
+      color: #778;
       line-height: 1.6;
     }
 
     .tag {
       display: inline-block;
       font-size: 0.6rem;
-      color: #998a6d;
-      border: 1px solid rgba(255, 210, 120, 0.15);
+      color: #6a9a9a;
+      border: 1px solid rgba(0, 255, 220, 0.15);
       border-radius: 3px;
       padding: 0.2em 0.5em;
       margin-top: 1rem;
@@ -211,11 +332,27 @@
 
     footer {
       position: relative;
-      z-index: 1;
+      z-index: 3;
       margin-top: 3rem;
       font-size: 0.65rem;
-      color: #333;
+      color: #334;
       letter-spacing: 0.1em;
+    }
+
+    /* --- occasional full-screen flash --- */
+    .flash-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      opacity: 0;
+      background: rgba(0, 255, 220, 0.03);
+      animation: screen-flash 6s infinite;
+    }
+
+    @keyframes screen-flash {
+      0%, 89%, 91%, 100% { opacity: 0; }
+      90% { opacity: 1; }
     }
   </style>
 </head>
@@ -229,8 +366,13 @@
 
   <div class="particles" id="particles"></div>
 
+  <div class="glitch-bars" id="glitchBars"></div>
+  <div class="flash-overlay"></div>
+
   <div class="content">
-    <h1>School Archives</h1>
+    <div class="glitch-wrap">
+      <h1 data-text="School Archives">School Archives</h1>
+    </div>
     <p class="sub">2022 front-end coursework</p>
     <div class="cards">
       <a class="card" href="./dm_-just-monika/index.html">
@@ -258,17 +400,33 @@
   </div>
 
   <script>
-    // spawn floating dust particles in the light
+    // spawn floating dust particles
     const box = document.getElementById("particles");
-    for (let i = 0; i < 25; i++) {
-      const d = document.createElement("div");
-      d.className = "dot";
-      d.style.left = Math.random() * 50 + "%";
-      d.style.top = 60 + Math.random() * 40 + "%";
-      d.style.width = d.style.height = (1 + Math.random() * 2) + "px";
-      d.style.animationDuration = (6 + Math.random() * 10) + "s";
-      d.style.animationDelay = (Math.random() * 8) + "s";
-      box.appendChild(d);
+    if (box) {
+      for (let i = 0; i < 25; i++) {
+        const d = document.createElement("div");
+        d.className = "dot";
+        d.style.left = Math.random() * 50 + "%";
+        d.style.top = 60 + Math.random() * 40 + "%";
+        d.style.width = d.style.height = (1 + Math.random() * 2) + "px";
+        d.style.animationDuration = (6 + Math.random() * 10) + "s";
+        d.style.animationDelay = (Math.random() * 8) + "s";
+        box.appendChild(d);
+      }
+    }
+
+    // spawn random glitch bars
+    const bars = document.getElementById("glitchBars");
+    if (bars) {
+      for (let i = 0; i < 8; i++) {
+        const b = document.createElement("div");
+        b.className = "g-bar";
+        b.style.top = (Math.random() * 100) + "%";
+        b.style.height = (1 + Math.random() * 4) + "px";
+        b.style.setProperty("--dur", (4 + Math.random() * 6) + "s");
+        b.style.setProperty("--delay", (Math.random() * 5) + "s");
+        bars.appendChild(b);
+      }
     }
   </script>
 </body>
